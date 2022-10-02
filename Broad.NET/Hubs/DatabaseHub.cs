@@ -7,7 +7,7 @@ namespace Broadcaster.Hubs
     {
         public Task NotifyTableUpdate(TableNotify notify)
         {
-            return Clients.All.SendAsync("tableChanged", notify.TableName);
+            return Clients.All.SendAsync("TableChanged", notify.TableName);
         }
     }
 }
