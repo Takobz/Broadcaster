@@ -25,6 +25,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapHub<DatabaseHub>("/realtime-database");
+app.MapHub<DatabaseHub>("/hubs/realtime-database");
 
 app.Run();
