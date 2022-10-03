@@ -1,13 +1,14 @@
+using Broadcaster.HubModels;
 using Broadcaster.Models;
 using Microsoft.AspNetCore.SignalR;
 
 namespace Broadcaster.Hubs
 {
-    public class DatabaseHub : Hub 
+    public class DatabaseHub : Hub<ITableClient> 
     {
         public Task NotifyTableUpdate(TableNotify notify)
         {
-            return Clients.All.SendAsync("TableChanged", notify.TableName);
+            return Clients.All.TableChanged(notify);
         }
     }
 }

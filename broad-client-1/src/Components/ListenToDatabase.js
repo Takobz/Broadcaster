@@ -10,8 +10,8 @@ const ListenToDatabse = () => {
       connection.start().then(() => {
         console.log("Contected to Hub");
 
-        connection.on("TableChanged", (tableName) => {
-          alert(`The table with name: ${tableName} was changed`);
+        connection.on("TableChanged", (notification) => {
+          alert(`The table with name: ${notification.tableName} was changed`);
         });
       }).catch(e => console.log('Connect Error', e));
     }
