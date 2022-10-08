@@ -13,5 +13,10 @@ namespace Broadcaster.Repository.Contexts
             var path  = System.IO.Path.Combine(Environment.CurrentDirectory, @"database\ChatterDatabse.db");
             builder.UseSqlite($"Filename={path}");
         }
+
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();
+        }
     }
 }

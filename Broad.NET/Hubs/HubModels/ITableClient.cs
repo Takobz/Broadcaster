@@ -1,7 +1,7 @@
 using Broadcaster.Models;
 using System.Threading;
 
-namespace Broadcaster.HubModels 
+namespace Broadcaster.Hubs.HubModels 
 {
     public interface ITableClient 
     {

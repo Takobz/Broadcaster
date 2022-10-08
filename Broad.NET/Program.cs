@@ -1,8 +1,21 @@
+using Broadcaster.Helpers;
 using Broadcaster.Hubs;
+using Broadcaster.Models.AutoMapperProfilers;
+using Broadcaster.Repository;
+using Broadcaster.Repository.Contexts;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddTransient<IChatterContext, ChatterContext>();
+builder.Services.AddTransient<IMessageRepository, MessageRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAutoMapperHelper, AutoMapperHelper>();
+
+//AutomapperProfilers
+builder.Services.AddAutoMapper(
+    typeof(MessageProfiler),
+    typeof(UserProfiler));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

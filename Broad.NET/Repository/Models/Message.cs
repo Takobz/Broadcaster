@@ -9,5 +9,10 @@ namespace Broadcaster.Repository.Models
         public int ToID { get; set; }
         [Column("Message")]
         public string Text { get; set; }
+
+        [ForeignKey("ToID")]
+        public User Recipient { get; set; }
+        [ForeignKey("FromID")]
+        public User Sender { get; set; }
     }
 }

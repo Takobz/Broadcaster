@@ -1,4 +1,4 @@
-using Broadcaster.HubModels;
+using Broadcaster.Hubs.HubModels;
 using Broadcaster.Hubs;
 using Broadcaster.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -18,10 +18,17 @@ namespace Broadcaster.Controllers
 
         [Route("api/notify-all")]
         [HttpPost]
-        public async Task<IActionResult> NotifyTableChnage(TableNotify notify)
+        public async Task<IActionResult> NotifyTableChange(TableNotify notify)
         {
             await _hubContext.Clients.All.TableChanged(notify);
             return Ok("Notified all clients");
+        }
+
+        [Route("api/add-user")]
+        public async Task<IActionResult> AddUser()
+        {
+            
+            return Ok();
         }
     }
 }

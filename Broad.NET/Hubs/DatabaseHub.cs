@@ -1,4 +1,4 @@
-using Broadcaster.HubModels;
+using Broadcaster.Hubs.HubModels;
 using Broadcaster.Models;
 using Microsoft.AspNetCore.SignalR;
 
