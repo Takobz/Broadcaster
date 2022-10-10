@@ -6,7 +6,7 @@ namespace Broadcaster.Repository
     public interface IMessageRepository
     {
         void CreateMessage(Message message);
-        ICollection<Message> GetMessageSentToUsernameByUsername(string sentToUsername, string sentByUsername);
+        ICollection<Message> GetMessagesSentToUsernameByUsername(string sentToUsername, string sentByUsername);
     }
 
     public class MessageRepository : IMessageRepository
@@ -23,10 +23,10 @@ namespace Broadcaster.Repository
             _chatterContext.SaveChanges();
         }
 
-        public ICollection<Message> GetMessageSentToUsernameByUsername(string sentToUsername, string sentByUsername)
+        public ICollection<Message> GetMessagesSentToUsernameByUsername(string sentToUsername, string sentByUsername)
         {
-            //var messages 
-            throw new Exception();
+            return _chatterContext.Messages.Where(x => x.Sender.Username == sentByUsername
+             && x.Recipient.Username == sentToUsername).ToList();
         }
     }
 }

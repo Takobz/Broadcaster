@@ -3,6 +3,8 @@ using Broadcaster.Hubs;
 using Broadcaster.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using Broadcaster.Repository;
+using Broadcaster.Services;
 
 namespace Broadcaster.Controllers
 {
@@ -10,10 +12,14 @@ namespace Broadcaster.Controllers
     public class TableController : ControllerBase
     {
         private readonly IHubContext<DatabaseHub, ITableClient> _hubContext;
+        private readonly IChatterDatabaseService _chatterDatabaseService;
 
-        public TableController(IHubContext<DatabaseHub, ITableClient> hubContext)
+        public TableController(
+            IHubContext<DatabaseHub, ITableClient> hubContext,
+            IChatterDatabaseService chatterDatabaseService)
         {
             _hubContext = hubContext;
+            _chatterDatabaseService = chatterDatabaseService;
         }
 
         [Route("api/notify-all")]
@@ -27,7 +33,7 @@ namespace Broadcaster.Controllers
         [Route("api/add-user")]
         public async Task<IActionResult> AddUser()
         {
-            
+
             return Ok();
         }
     }
